@@ -32,7 +32,7 @@ permissions:
 
 jobs:
   push-operator-images:
-    runs-on: ubicloud-standard-2
+    runs-on: operator-sm-standard-2
     if: |
       github.event_name == 'workflow_dispatch' ||
       (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push')
