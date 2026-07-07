@@ -16,8 +16,8 @@ name: Publish Docker Image
 
 on:
   workflow_run:
-    workflows: [ "Continuous Integration" ]
-    types: [ completed ]
+    release:
+      types: [published]
   workflow_dispatch:
     inputs:
       version:
@@ -48,7 +48,7 @@ jobs:
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             RAW="${{ github.event.inputs.version }}"
           else
-            RAW="${{ github.event.workflow_run.head_branch }}"
+            RAW="${{ github.event.release.tag_name }}"
           fi
           RAW_TAG="${RAW#refs/tags/}"
           VERSION="${RAW_TAG#v}"
