@@ -15,9 +15,8 @@
 name: Publish Docker Image
 
 on:
-  workflow_run:
-    release:
-      types: [published]
+  release:
+    types: [published]
   workflow_dispatch:
     inputs:
       version:
